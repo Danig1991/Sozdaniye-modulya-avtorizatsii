@@ -50,10 +50,10 @@ class Test:
 
     def go_to_cart(self):
         # переход в корзину
-        go_to_cart = WebDriverWait(self.driver_chrome, 30).until(
+        icon_cart = WebDriverWait(self.driver_chrome, 30).until(
             EC.element_to_be_clickable((By.ID, "shopping_cart_container"))
         )
-        go_to_cart.click()
+        icon_cart.click()
         print("Переход в корзину.")
 
     def in_the_cart(self):
