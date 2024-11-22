@@ -37,28 +37,29 @@ class Test:
 
     def select_product(self):
         # название продукта
-        value_product_name = (WebDriverWait(self.driver_chrome, 30)
-                              .until(EC.element_to_be_clickable((By.ID, "item_4_title_link")))
-                              .text)
+        value_product_name = WebDriverWait(self.driver_chrome, 30).until(
+            EC.element_to_be_clickable((By.ID, "item_4_title_link"))
+        ).text
 
         # добавление в корзину
-        (WebDriverWait(self.driver_chrome, 30)
-         .until(EC.element_to_be_clickable((By.ID, "add-to-cart-sauce-labs-backpack")))
-         .click())
+        add_to_cart = WebDriverWait(self.driver_chrome, 30).until(
+            EC.element_to_be_clickable((By.ID, "add-to-cart-sauce-labs-backpack"))
+        )
+        add_to_cart.click()
         print(f"Товар \"{value_product_name}\" добавлен в корзину.")
 
     def go_to_cart(self):
         # переход в корзину
-        (WebDriverWait(self.driver_chrome, 30)
-         .until(EC.element_to_be_clickable((By.ID, "shopping_cart_container")))
-         .click())
+        go_to_cart = WebDriverWait(self.driver_chrome, 30).until(
+            EC.element_to_be_clickable((By.ID, "shopping_cart_container")))
+        go_to_cart.click()
         print("Переход в корзину.")
 
     def in_the_cart(self):
         # поиск элемента
-        value_text_in_to_cart = (WebDriverWait(self.driver_chrome, 30)
-                                 .until(EC.element_to_be_clickable((By.XPATH, "//span[@class='title']")))
-                                 .text)
+        value_text_in_to_cart = WebDriverWait(self.driver_chrome, 30).until(
+            EC.element_to_be_clickable((By.XPATH, "//span[@class='title']"))
+        ).text
         assert value_text_in_to_cart == "Your Cart", "Ошибка: Текст должен совпадать."
         print(f"Текст \"{value_text_in_to_cart}\" присутствует на странице.")
 
